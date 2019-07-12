@@ -19,7 +19,11 @@ namespace BatPrismTutorials.ViewModels
         //{
         //    Title = "Main Page";
         //}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="navigationService"></param>
+        /// <param name="batFamilyServiceParam"></param>
         public MainPageViewModel(INavigationService navigationService, IBatFamilyService batFamilyServiceParam) : base(navigationService)
         {
             this.BatItemService = batFamilyServiceParam;
