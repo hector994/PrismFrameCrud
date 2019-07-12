@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BatPrismTutorials.Views.MainPage"
+             Title="{Binding Title}"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Name="Page">
+
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                iOS="0,20,0,0" />
+    </ContentPage.Padding>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"
+                 Command="{Binding AddCommand}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <Entry Text="{Binding InputText, Mode=TwoWay}" />
+        <ListView ItemsSource="{Binding BatFamilyAlls}"
+                  SelectedItem="{Binding SelectedBatFamily}"
+              VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete"
+                        Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Page}}"
+                        CommandParameter="{Binding}" />
+                            <MenuItem Text="UPdate"
+                        Command="{Binding BindingContext.UpdateCommand, Source={x:Reference Page}}"
+                        CommandParameter="{Binding}" />
+                        </ViewCell.ContextActions>
+                        <Label Text="{Binding Nombre}" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+    <!--<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Label Text="Welcome to Xamarin Forms and Prism!" />
+    </StackLayout>-->
+
+</ContentPage>
